@@ -10,18 +10,33 @@ public class Main {
         Matrix weights = new Matrix(new double[][]{
                 {-0.3, 0.4, -0.4}
         });
-        Matrix input = new Matrix(new double[][]{
+        Matrix input00 = new Matrix(new double[][]{
                 {1, 0, 0}
+        });
+        Matrix input01 = new Matrix(new double[][]{
+                {1, 0, 1}
+        });
+        Matrix input10 = new Matrix(new double[][]{
+                {1, 1, 0}
+        });
+        Matrix input11 = new Matrix(new double[][]{
+                {1, 1, 1}
         });
 
         Perceptron p = new Perceptron(weights, Activation::heaviside_step);
-        for (int i = 0; i < 6; i++) {
-            System.out.println(p.propagate(input));
-            p.epoch(input, 0, 0.25);
-            System.out.println(p.weight);
+        // Train perceptron to recognise AND operation
+        for (int i = 0; i < 3; i++) {
+            p.epoch(input00, 0, 0.25);
+            p.epoch(input01, 0, 0.25);
+            p.epoch(input10, 0, 0.25);
+            p.epoch(input11, 1, 0.25);
         }
+        
 
         System.out.println(p.weight);
-        System.out.println(p.propagate(input));
+        System.out.println(p.propagate(input00));
+        System.out.println(p.propagate(input01));
+        System.out.println(p.propagate(input10));
+        System.out.println(p.propagate(input11));
     }
 }
