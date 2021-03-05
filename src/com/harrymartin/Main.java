@@ -1,6 +1,6 @@
 package com.harrymartin;
 
-import com.harrymartin.Matrix;
+import com.harrymartin.ml.Matrix;
 
 public class Main {
 

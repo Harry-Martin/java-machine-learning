@@ -1,4 +1,4 @@
-package com.harrymartin;
+package com.harrymartin.ml;
 
 public class Matrix {
 
