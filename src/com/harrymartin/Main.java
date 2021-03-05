@@ -1,23 +1,27 @@
 package com.harrymartin;
 
+import com.harrymartin.ml.Activation;
 import com.harrymartin.ml.Matrix;
+import com.harrymartin.ml.Perceptron;
 
 public class Main {
 
     public static void main(String[] args) {
-
-	    Matrix m1 = new Matrix(new double[][] {
-	            {1, 2, 3},
-                {4, 5, 6}
-	    });
-
-        Matrix m2 = new Matrix(new double[][] {
-                {7, 8},
-                {9, 10},
-                {11, 12}
+        Matrix weights = new Matrix(new double[][]{
+                {-0.3, 0.4, -0.4}
         });
-        Matrix m3 = Matrix.dot(m1, m2);
-	    System.out.println(m3);
+        Matrix input = new Matrix(new double[][]{
+                {1, 0, 0}
+        });
 
+        Perceptron p = new Perceptron(weights, Activation::heaviside_step);
+        for (int i = 0; i < 6; i++) {
+            System.out.println(p.propagate(input));
+            p.epoch(input, 0, 0.25);
+            System.out.println(p.weight);
+        }
+
+        System.out.println(p.weight);
+        System.out.println(p.propagate(input));
     }
 }

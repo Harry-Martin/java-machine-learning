@@ -82,4 +82,32 @@ public class Matrix {
         }
         return result;
     }
+
+
+    public static Matrix add(Matrix m1, Matrix m2){
+        Matrix result = new Matrix(m1.rows, m1.cols);
+        for (int i = 0; i < result.rows; i++) {
+            for (int j = 0; j < result.cols; j++) {
+                result.data[i][j] = m1.data[i][j] + m2.data[i][j];
+            }
+        }
+        return result;
+    }
+
+
+    // Sum all elements in a matrix
+    public static double sum(Matrix m){
+        double sum = 0.0;
+        for (int i = 0; i < m.rows; i++) {
+            for (int j = 0; j < m.cols; j++) {
+                sum += m.data[i][j];
+            }
+        }
+        return sum;
+    }
+
+    public static Matrix neg(Matrix m){
+        return mul(m, -1);
+    }
+
 }
