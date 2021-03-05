@@ -7,6 +7,6 @@ Java package for machine learning models.
 
 ## TODO:
 - [x] Matrix Class
-- [ ] Feedforward neural network
-- [ ] Back propagation
+- [ ] Perceptron
+- [ ] Feed Forward Neural Network
 - [ ] ...
